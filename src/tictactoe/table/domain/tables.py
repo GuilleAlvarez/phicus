@@ -19,6 +19,9 @@ class Tables:
     def get_table(self) -> list:
         return self.table
     
+    def is_empty(self, row: int, column: int) -> bool:
+        return self.table[row][column] == Tables.EMPTY_ELEMENT
+    
     def update_table(self, id_player:int, row: int, column: int):
         self.table[row][column] = id_player
 
