@@ -1,9 +1,10 @@
 from src.tictactoe.table.domain.itablerepository import ITableRepository
 from src.tictactoe.table.domain.tables import Tables
 from src.validations.validate_make_a_movement import ValidateMakeAMovement
+from utils.domain.singletonmeta import SingletonMeta
 
 
-class MakeAMovement:
+class MakeAMovement(metaclass=SingletonMeta):
 
     def __init__(self, table_repository:ITableRepository) -> None:
         self.table_repository:ITableRepository = table_repository

@@ -1,9 +1,10 @@
 
 
 from src.tictactoe.table.domain.tables import Tables
+from utils.domain.singletonmeta import SingletonMeta
 
 
-class CheckPlayerWin:
+class CheckPlayerWin(metaclass=SingletonMeta):
     
     def execute(self, table: Tables, id_player: int) -> bool:
         return any((

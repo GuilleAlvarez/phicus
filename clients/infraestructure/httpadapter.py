@@ -1,9 +1,10 @@
 from flask import Flask, jsonify
 from clients.domain.iappclientinterface import IAppClientInterface
 from src.tictactoe.table.domain.tables import Tables
+from utils.domain.singletonmeta import SingletonMeta
 
 
-class HttpAdapter(IAppClientInterface):
+class HttpAdapter(IAppClientInterface,metaclass=SingletonMeta):
 
     def __init__(self, handler: dict) -> None:
         self.handler = handler

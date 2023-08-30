@@ -1,9 +1,10 @@
 from src.tictactoe.table.domain.itablerepository import ITableRepository
 from src.tictactoe.table.domain.tables import Tables
 from src.tictactoe.table.infraestructure.tableDTO import TablesDTO
+from utils.domain.singletonmeta import SingletonMeta
 
 
-class TableMemory(ITableRepository):
+class TableMemory(ITableRepository,metaclass=SingletonMeta):
 
     def __init__(self) -> None:
         self.tables: [TablesDTO] = []

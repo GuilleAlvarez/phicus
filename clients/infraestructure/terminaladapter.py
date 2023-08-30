@@ -1,8 +1,9 @@
 from clients.domain.iappclientinterface import IAppClientInterface
 from src.tictactoe.table.domain.tables import Tables
+from utils.domain.singletonmeta import SingletonMeta
 
 
-class TerminalAdapter(IAppClientInterface):
+class TerminalAdapter(IAppClientInterface, metaclass=SingletonMeta):
 
     def __init__(self, handler: dict) -> None:
         self.handler = handler
@@ -46,5 +47,5 @@ class TerminalAdapter(IAppClientInterface):
         return row, column
     
     def player_win(self, player):
-        print(f"El jugador: {player} ha ganado")
+        print(f"¡¡El jugador: {player} ha ganado!!")
     
