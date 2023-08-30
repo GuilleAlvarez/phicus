@@ -38,8 +38,16 @@ class TerminalAdapter(IAppClientInterface, metaclass=SingletonMeta):
     def render_table(self, table: Tables):
         for row in table.get_table():
             for elem in row:
-                print(elem, end=" ")
+                print(self.pre_print(elem), end=" ")
             print()
+
+    def pre_print(self, element):
+        if element is None:
+            return "_"
+        elif element == 0:
+            return "O"
+        elif element == 1:
+            return "X"
 
     def get_msg_to_play(self, player):
         print(f"Es el turno del jugador: {player}")
