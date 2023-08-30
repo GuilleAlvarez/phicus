@@ -1,0 +1,10 @@
+[run]
+source = 
+    clients
+    src
+
+[report]
+omit =
+    #external dependencies
+    */infraestructure/*
+    */infrastructure/*
