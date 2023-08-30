@@ -24,8 +24,3 @@ class Tables:
     
     def update_table(self, id_player:int, row: int, column: int):
         self.table[row][column] = id_player
-
-
-    @staticmethod
-    def create_new_table():
-        return Tables

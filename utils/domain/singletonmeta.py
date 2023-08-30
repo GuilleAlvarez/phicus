@@ -1,5 +1,5 @@
 
-class SingletonMeta:
+class SingletonMeta(type):
 
     _instances = {}
 
