@@ -9,8 +9,13 @@ class TerminalAdapter(IAppClientInterface, metaclass=SingletonMeta):
         self.handler = handler
 
     def run(self):
-        table:Tables = self.handler.get("new_game")()
         print("Juego tic tac toe")
+        is_playing = input("Pulse 0 para salir, o pulse otra tecla para jugar: ")
+        while is_playing!="0":
+            self.play_a_match()
+
+    def play_a_match(self):
+        table:Tables = self.handler.get("new_game")()
         game_over = False
         player = 0
         while(game_over is False):
@@ -21,9 +26,14 @@ class TerminalAdapter(IAppClientInterface, metaclass=SingletonMeta):
             except ValueError as e:
                 print(e)
                 continue
-            if (self.handler.get("check_player_win")(table, player)): break
+            if (self.handler.get("check_player_win")(table, player)):
+                self.player_win(player)
+                break
+            if (self.handler.get("check_is_draw")(table)):
+                self.draw()
+                break
             player = (player+1)%2
-        self.player_win(player)
+
 
     def render_table(self, table: Tables):
         for row in table.get_table():
@@ -48,4 +58,7 @@ class TerminalAdapter(IAppClientInterface, metaclass=SingletonMeta):
     
     def player_win(self, player):
         print(f"¡¡El jugador: {player} ha ganado!!")
+
+    def draw(self):
+        print(f"¡¡El juego ha terminado: ha sido un empate!!")
     
