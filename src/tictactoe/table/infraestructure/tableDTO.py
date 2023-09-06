@@ -1,3 +1,4 @@
+import copy
 from src.tictactoe.table.domain.tables import Tables
 
 
@@ -9,7 +10,8 @@ class TablesDTO:
 
     @staticmethod
     def create_new_table(id, 
-        table=Tables.EMPTY_TABLE):
+        table=None):
+        if table is None: table = copy.deepcopy(Tables.EMPTY_TABLE)
         return TablesDTO(id, table)
     
     @staticmethod

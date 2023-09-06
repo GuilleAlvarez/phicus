@@ -9,9 +9,11 @@ class TerminalAdapter(IAppClientInterface, metaclass=SingletonMeta):
         self.handler = handler
 
     def run(self):
-        print("Juego tic tac toe")
-        is_playing = input("Pulse 0 para salir, o pulse otra tecla para jugar: ")
+        is_playing = 1
         while is_playing!="0":
+            print("Juego tic tac toe")
+            is_playing = input("Pulse 0 para salir, o pulse otra tecla para jugar: ")
+            if is_playing=='0': break
             self.play_a_match()
 
     def play_a_match(self):
